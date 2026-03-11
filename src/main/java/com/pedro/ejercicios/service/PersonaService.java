@@ -12,17 +12,28 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
+/**
+ * Servicio que gestiona las operaciones relacionadas con personas.
+ */
 @Service
 public class PersonaService {
 
+    /** Logger de la clase. */
     private static final Logger log = LoggerFactory.getLogger(PersonaService.class);
 
+    /** Lista de personas almacenadas. */
     private Personas personas;
+
+    /** Persona almacenada desde el formulario. */
     private Persona storedPerson;
 
+    /** Patrón para validar el formato del DNI. */
     // regex DNI
     private static final Pattern DNI_PATTERN = Pattern.compile("^[0-9]{8}[A-Za-z]$");
 
+    /**
+     * Constructor que inicializa una lista de personas.
+     */
     public PersonaService() {
 
         log.info("Inicializando lista de personas");
@@ -44,6 +55,11 @@ public class PersonaService {
     }
 
     // EJERCICIO 1
+    /**
+     * Crea y devuelve una persona de ejemplo.
+     *
+     * @return persona creada
+     */
     public Persona obtenerPersona() {
         log.info("Inicio obtenerPersona");
 
@@ -59,6 +75,17 @@ public class PersonaService {
     }
 
     // EJERCICIO 2
+    /**
+     * Recibe los datos del formulario y guarda una persona.
+     *
+     * @param nombre nombre
+     * @param apellido1 primer apellido
+     * @param apellido2 segundo apellido
+     * @param fechaNacimiento fecha de nacimiento
+     * @param sexo sexo
+     * @return mensaje con el resultado
+     * @throws Exception si ocurre algún error
+     */
     public String recibirFormulario(String nombre, String apellido1, String apellido2, String fechaNacimiento, String sexo) throws Exception {
         log.info("Inicio recibirFormulario");
 
@@ -83,6 +110,12 @@ public class PersonaService {
         }
     }
 
+    /**
+     * Valida el formato del dni.
+     *
+     * @param dni dni a validar
+     * @throws Exception si el formato es incorrecto
+     */
     // validar DNI
     private void validarDni(String dni) throws Exception {
 
@@ -95,6 +128,13 @@ public class PersonaService {
     }
 
     // EJERCICIO 3.1
+    /**
+     * Busca una persona por su dni.
+     *
+     * @param dni dni de la persona
+     * @return persona encontrada o null
+     * @throws Exception si ocurre algún error
+     */
     public Persona getPersonaByDni(String dni) throws Exception {
         log.info("Buscando persona por DNI {}", dni);
         try {
@@ -117,6 +157,13 @@ public class PersonaService {
     }
 
     // EJERCICIO 3.2
+    /**
+     * Actualiza los datos de una persona.
+     *
+     * @param updatedPerson persona con los datos nuevos
+     * @return mensaje con el resultado
+     * @throws Exception si ocurre algún error
+     */
     public String updatePersona(Persona updatedPerson) throws Exception {
         log.info("Inicio actualizarPersona");
 
@@ -144,4 +191,6 @@ public class PersonaService {
             throw e;
         }
     }
+
+
 }
