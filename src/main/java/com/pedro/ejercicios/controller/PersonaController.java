@@ -76,7 +76,7 @@ public class PersonaController {
      * @return persona encontrada
      */
     @GetMapping("/persona/{dni}")
-    public Persona getPersonByDni(@PathVariable String dni) {
+    public Persona getPersonByDni(@Valid @PathVariable String dni) {
         try {
             return personaService.getPersonaByDni(dni);
         } catch (Exception e) {
@@ -93,7 +93,7 @@ public class PersonaController {
      * @return mensaje con el resultado
      */
     @PutMapping("/persona")
-    public String updatePerson(@RequestBody Persona updatedPerson) {
+    public String updatePerson(@Valid @RequestBody Persona updatedPerson) {
         try {
             return personaService.updatePersona(updatedPerson);
         } catch (Exception e) {

@@ -179,7 +179,7 @@ public class PersonaService {
                     p.setFechaNacimiento(updatedPerson.getFechaNacimiento());
                     p.setSexo(updatedPerson.getSexo());
 
-                    log.info("Persona actualizada crrectamente");
+                    log.info("El usuario ha actualizado la persona {} correctamente", p.getDni());
                     return "Persona actualizada correctamente";
                 }
             }
